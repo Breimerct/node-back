@@ -37,7 +37,7 @@ export const checkAuth = (
       email,
     };
     next();
-  } catch (e) {
+  } catch (e: any) {
     res.status(401).send(e.message);
   }
 };

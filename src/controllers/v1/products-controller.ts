@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-import { Types } from 'mongoose';
 import Products from '../../db/schemas/product';
 import { sendError, validateObjectId } from '../../utils/response_utils';
-import { validateNewProductBody } from '../../validators/v1/products-validator';
 
 export const getProducts = async (
   req: Request,
@@ -186,7 +184,7 @@ export const deleteProductById = async (
       user: req.session.userId,
     });
 
-    if (deleted.deletedCount > 0) {
+    if (deleted.deletedCount! > 0) {
       res.send({});
     } else {
       res.status(404).send({});
